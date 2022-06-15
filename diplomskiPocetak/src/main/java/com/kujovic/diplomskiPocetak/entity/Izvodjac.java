@@ -56,5 +56,7 @@ public class Izvodjac implements Serializable {
 //	@JoinColumn(name="u_fk", referencedColumnName = "ulogaId")
 //	private int ulogaId;
 //	
-//	private String opis;
+	private int semestar;
+	private int pozicija;
+
 }

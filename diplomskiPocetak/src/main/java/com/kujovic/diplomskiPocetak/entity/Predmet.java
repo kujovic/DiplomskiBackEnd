@@ -25,6 +25,7 @@ public class Predmet  implements Serializable{
 	//private String studijskiProgram;
 	//private String modul;
 	private boolean obavezan;
+	private int espb;
 	
 	@ManyToOne
 	private Katedra katedra;
