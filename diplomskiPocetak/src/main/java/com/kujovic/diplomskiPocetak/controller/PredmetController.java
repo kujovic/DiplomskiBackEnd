@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.kujovic.diplomskiPocetak.entity.Nastavnik;
 import com.kujovic.diplomskiPocetak.entity.Predmet;
+import com.kujovic.diplomskiPocetak.service.IzvodjacService;
 import com.kujovic.diplomskiPocetak.service.PredmetService;
 
 @RestController

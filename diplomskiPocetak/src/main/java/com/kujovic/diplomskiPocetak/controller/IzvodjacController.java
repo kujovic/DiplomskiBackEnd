@@ -8,16 +8,20 @@ import org.springframework.web.bind.annotation.*;
 
 import com.kujovic.diplomskiPocetak.entity.Izvodjac;
 import com.kujovic.diplomskiPocetak.entity.IzvodjacId;
+import com.kujovic.diplomskiPocetak.entity.Predmet;
 import com.kujovic.diplomskiPocetak.service.IzvodjacService;
+import com.kujovic.diplomskiPocetak.service.PredmetService;
 
 @RestController
 @RequestMapping("/izvodjac")
 public class IzvodjacController {
 
 private final IzvodjacService izvodjacService;
+private final PredmetService predmetService;
 	
-	public IzvodjacController(IzvodjacService izvodjacService) {
+	public IzvodjacController(IzvodjacService izvodjacService, PredmetService predmetService) {
 		this.izvodjacService=izvodjacService;
+		this.predmetService= predmetService;
 	}
 	
 	@GetMapping("/all")
@@ -45,5 +49,17 @@ private final IzvodjacService izvodjacService;
 		izvodjacService.deleteIzvodjac(izvodjacId);
 		return new ResponseEntity<>(HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/get/{id}")
+	public ResponseEntity<List<Izvodjac>> getNastavnikById(@PathVariable Long id) {
+		Predmet predmet = predmetService.nadjiPredmetPoId(id)
+				.orElseThrow(()-> new RuntimeException("Ne postoji predmet sa id-jem: "+id));
+		List<Izvodjac> izvodjac = izvodjacService.pronadjiSveIzvodjacePoPredmetu(id);
+		for (Izvodjac i : izvodjac) {
+			i.setPredmet(predmet);
+		}
+		
+		return new ResponseEntity<>(izvodjac,HttpStatus.OK);
 	}
 }
