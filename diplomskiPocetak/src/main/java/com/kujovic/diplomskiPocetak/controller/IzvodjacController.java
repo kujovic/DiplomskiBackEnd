@@ -58,6 +58,7 @@ private final PredmetService predmetService;
 		List<Izvodjac> izvodjac = izvodjacService.pronadjiSveIzvodjacePoPredmetu(id);
 		for (Izvodjac i : izvodjac) {
 			i.setPredmet(predmet);
+			System.out.println(i.getNastavnik().getImePrezime());
 		}
 		
 		return new ResponseEntity<>(izvodjac,HttpStatus.OK);
