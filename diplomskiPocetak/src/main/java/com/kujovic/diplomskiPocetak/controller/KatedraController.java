@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.kujovic.diplomskiPocetak.entity.Katedra;
+import com.kujovic.diplomskiPocetak.entity.Nastavnik;
 import com.kujovic.diplomskiPocetak.service.KatedraService;
 
 
@@ -59,6 +60,14 @@ public class KatedraController {
 					.orElseThrow(()-> new RuntimeException("Ne postoji katedra sa id-jem: "+id));
 			return new ResponseEntity<>(katedra,HttpStatus.OK);
 		}
+		
+		
+		@GetMapping("/getnastavnik/{id}")
+		public ResponseEntity<List<Nastavnik>> getNastavnikeByKatedra(@PathVariable Long id) {
+			List<Nastavnik> katedreNastavnikDTO = katedraService.nadjiNastavnikeNaKatedri(id);
+			return new ResponseEntity<>(katedreNastavnikDTO,HttpStatus.OK);
+		}
+		
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteKatedra (@PathVariable("id") Long id){

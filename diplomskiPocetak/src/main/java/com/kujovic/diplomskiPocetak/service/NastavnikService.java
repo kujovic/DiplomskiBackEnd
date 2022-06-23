@@ -41,4 +41,8 @@ public class NastavnikService {
 		nastavnikRepository.deleteById(id);
 	}
 	
+	public List<Nastavnik> pronadjiSveNastavnikeNaKatedri(Long id){
+		return nastavnikRepository.findNastavniciNaKatedri(id);
+	}
+	
 }

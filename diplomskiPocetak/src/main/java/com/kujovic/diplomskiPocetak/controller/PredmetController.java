@@ -66,7 +66,7 @@ public class PredmetController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Predmet> getNastavnikById(@PathVariable Long id) {
+	public ResponseEntity<Predmet> getPredmetById(@PathVariable Long id) {
 		Predmet predmet = predmetService.nadjiPredmetPoId(id)
 				.orElseThrow(()-> new RuntimeException("Ne postoji predmet sa id-jem: "+id));
 		return new ResponseEntity<>(predmet,HttpStatus.OK);
