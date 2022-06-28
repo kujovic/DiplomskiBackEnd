@@ -46,8 +46,8 @@ public class IzvodjacService {
 				
 	}
 
-	public void deleteIzvodjac(IzvodjacId izvodjacId) {
-		izvodjacRepository.getById(izvodjacId);
+	public void deleteIzvodjac(Long id) {
+		izvodjacRepository.deleteById(id);
 	}
 	
 }

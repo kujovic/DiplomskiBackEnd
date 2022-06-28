@@ -11,30 +11,32 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@IdClass(IzvodjacId.class)
+//@IdClass(IzvodjacId.class)
 public class Izvodjac implements Serializable {
+	
 	@Id
+	private Long izvodjacId;
+	
 	@ManyToOne
 	@JoinColumn(name="ulogaId")
 	private Uloga uloga;
 	
-	@Id
 	@ManyToOne
 	@JoinColumn(name="nastavnikId")
 	private Nastavnik nastavnik;
 	
-	@Id
+
 	@ManyToOne
 	@JoinColumn(name="predmetId")
 	private Predmet  predmet;
 	
-	@Id
+
 	@ManyToOne
 	@JoinColumn(name="godinaId")
 	private Godina godina;
 	
 	
-	@Id
+
 	@ManyToOne
 	@JoinColumn(name="studijskiProgramId")
 	private StudijskiProgram studijskiProgram;

@@ -2,6 +2,8 @@ package com.kujovic.diplomskiPocetak.entity;
 
 import java.io.Serializable;
 
+
+
 public class IzvodjacId implements Serializable{
 
 	private Uloga uloga;

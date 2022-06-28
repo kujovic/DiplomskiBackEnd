@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.kujovic.diplomskiPocetak.entity.Izvodjac;
 import com.kujovic.diplomskiPocetak.entity.IzvodjacId;
+import com.kujovic.diplomskiPocetak.entity.Katedra;
 import com.kujovic.diplomskiPocetak.entity.Predmet;
 import com.kujovic.diplomskiPocetak.service.IzvodjacService;
 import com.kujovic.diplomskiPocetak.service.PredmetService;
@@ -31,7 +32,7 @@ private final PredmetService predmetService;
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Izvodjac> addIzvodjac (@RequestBody Izvodjac izvodjac){
+	public ResponseEntity<?> addIzvodjac (@RequestBody Izvodjac izvodjac){
 		Izvodjac newIzvodjac = izvodjacService.dodajIzvodjaca(izvodjac);
 		return new ResponseEntity<>(newIzvodjac,HttpStatus.CREATED);
 		
@@ -44,9 +45,9 @@ private final PredmetService predmetService;
 		
 	}
 
-	@DeleteMapping("/delete")
-	public ResponseEntity<?> deleteIzvodjac (@RequestBody IzvodjacId izvodjacId){
-		izvodjacService.deleteIzvodjac(izvodjacId);
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteNastavnik (@PathVariable("id") Long id){
+		izvodjacService.deleteIzvodjac(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 		
 	}
@@ -60,6 +61,7 @@ private final PredmetService predmetService;
 			i.setPredmet(predmet);
 			System.out.println(i.getNastavnik().getImePrezime());
 		}
+		
 		
 		return new ResponseEntity<>(izvodjac,HttpStatus.OK);
 	}
