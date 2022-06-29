@@ -2,10 +2,7 @@ package com.kujovic.diplomskiPocetak.repository;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.kujovic.diplomskiPocetak.entity.Izvodjac;
@@ -16,6 +13,8 @@ public interface IzvodjacRepository extends JpaRepository<Izvodjac, Long> {
 	List<Izvodjac> findByPredmet(Long predmetId);
 
 	
+	@Query(value = "select max(diplomskipocetak2.izvodjac.izvodjac_id+1) from diplomskipocetak2.izvodjac;", nativeQuery = true)
+	Long vratiMaxIzvodjacId();
 	
 //	@Modifying
 //	@Query(value ="INSERT INTO `diplomskipocetak2`.`izvodjac` (`predmet_id`, `uloga_id`, `nastavnik_id`, `godina_id`, `studijski_program_id`, `pozicija`, `semestar`) "

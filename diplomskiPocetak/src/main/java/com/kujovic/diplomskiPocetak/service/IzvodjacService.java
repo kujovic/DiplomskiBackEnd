@@ -26,6 +26,7 @@ public class IzvodjacService {
 	}
 	
 	public Izvodjac dodajIzvodjaca(Izvodjac izvodjac) {
+		izvodjac.setIzvodjacId(izvodjacRepository.vratiMaxIzvodjacId());
 		return izvodjacRepository.save(izvodjac);
 	}
 	
@@ -49,5 +50,9 @@ public class IzvodjacService {
 	public void deleteIzvodjac(Long id) {
 		izvodjacRepository.deleteById(id);
 	}
+	
+//	public Long vratiMaxIzvodjacId() {
+//		return izvodjacRepository.vratiMaxIzvodjacId();
+//	}
 	
 }

@@ -65,4 +65,10 @@ private final PredmetService predmetService;
 		
 		return new ResponseEntity<>(izvodjac,HttpStatus.OK);
 	}
+	
+//	@GetMapping("/getmax")
+//	public ResponseEntity<Long> get() {
+//		Long maxIzvodjac = izvodjacService.vratiMaxIzvodjacId();		
+//		return new ResponseEntity<>(maxIzvodjac,HttpStatus.OK);
+//	}
 }
