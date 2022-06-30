@@ -15,4 +15,10 @@ public interface NastavnikRepository extends JpaRepository<Nastavnik, Long>{
 	
 	List<Nastavnik> findNastavniciNaKatedri(Long id);
 
+
+	@Query(value = "select max(diplomskipocetak2.nastavnik.nastavnik_id+1) from diplomskipocetak2.nastavnik;", nativeQuery = true)
+	Long vratiMaxNastavnikId();
+	
+
 }
+

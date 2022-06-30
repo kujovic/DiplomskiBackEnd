@@ -24,6 +24,7 @@ public class KatedraService {
 	}
 
 	public Katedra dodajKatedru(Katedra katedra) {
+		katedra.setKatedraId(katedraRepository.vratiMaxKatedraId());
 		return katedraRepository.save(katedra);
 	}
 

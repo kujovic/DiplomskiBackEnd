@@ -21,6 +21,7 @@ public class NastavnikService {
 	
 	
 	public Nastavnik dodajNastavnika(Nastavnik nastavnik) {
+		nastavnik.setNastavnikId(nastavnikRepository.vratiMaxNastavnikId());
 		return nastavnikRepository.save(nastavnik);
 	}
 	
