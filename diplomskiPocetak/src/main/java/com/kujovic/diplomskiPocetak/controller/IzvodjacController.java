@@ -33,6 +33,7 @@ private final PredmetService predmetService;
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> addIzvodjac (@RequestBody Izvodjac izvodjac){
+		
 		Izvodjac newIzvodjac = izvodjacService.dodajIzvodjaca(izvodjac);
 		return new ResponseEntity<>(newIzvodjac,HttpStatus.CREATED);
 		
@@ -59,7 +60,7 @@ private final PredmetService predmetService;
 		List<Izvodjac> izvodjac = izvodjacService.pronadjiSveIzvodjacePoPredmetu(id);
 		for (Izvodjac i : izvodjac) {
 			i.setPredmet(predmet);
-			System.out.println(i.getNastavnik().getImePrezime());
+			//System.out.println(i.getNastavnik().getImePrezime());
 		}
 		
 		

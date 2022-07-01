@@ -16,6 +16,10 @@ public interface IzvodjacRepository extends JpaRepository<Izvodjac, Long> {
 	@Query(value = "select max(diplomskipocetak2.izvodjac.izvodjac_id+1) from diplomskipocetak2.izvodjac;", nativeQuery = true)
 	Long vratiMaxIzvodjacId();
 	
+	
+	
+	@Query(value = "select max(pozicija)+1 from diplomskipocetak2.izvodjac where semestar in (?1,?2);", nativeQuery = true)
+	int vratiMaxPozicijuZaGodinu(int semestar1,int semestar2);
 //	@Modifying
 //	@Query(value ="INSERT INTO `diplomskipocetak2`.`izvodjac` (`predmet_id`, `uloga_id`, `nastavnik_id`, `godina_id`, `studijski_program_id`, `pozicija`, `semestar`) "
 //			+ "VALUES ('?1', '?2', '?3', '?4', '?5', '?6', '?7')",nativeQuery = true)

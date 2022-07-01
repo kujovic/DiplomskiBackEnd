@@ -20,6 +20,8 @@ public class PredmetService {
 	}
 	
 	public Predmet dodajPredmet(Predmet predmet) {
+		predmet.setPredmetId(predmetRepository.vratiMaxPredmetId());
+		
 		return predmetRepository.save(predmet);
 	}
 	

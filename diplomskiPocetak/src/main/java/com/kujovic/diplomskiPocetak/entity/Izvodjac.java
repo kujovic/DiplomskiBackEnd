@@ -27,12 +27,14 @@ public class Izvodjac implements Serializable {
 	
 
 	@ManyToOne
+	
 	@JoinColumn(name="predmetId")
 	private Predmet  predmet;
 	
 
 	@ManyToOne
 	@JoinColumn(name="godinaId")
+	
 	private Godina godina;
 	
 	
